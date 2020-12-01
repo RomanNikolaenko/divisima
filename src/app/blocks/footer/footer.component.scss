@@ -1,0 +1,7 @@
+@import "~src/assets/styles/colors";
+@import "~src/assets/styles/mixins";
+
+.footer {
+   background-color: $backFooter;
+   padding: 60px 0;
+}

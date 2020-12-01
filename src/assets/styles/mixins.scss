@@ -1,0 +1,56 @@
+$maxWidth: 1670;
+
+@mixin size($pcSize, $mobSize) {
+  font-size: calc(#{$mobSize + px} + (#{$pcSize} - #{$mobSize}) * ((100vw - 320px) / (#{$maxWidth - 320})));
+
+  @media (min-width: #{$maxWidth + px}) {
+    font-size: #{$pcSize + px};
+  }
+}
+
+@mixin width($pcSize, $mobSize) {
+  width: calc(#{$mobSize + px} + (#{$pcSize} - #{$mobSize}) * ((100vw - 320px) / (#{$maxWidth - 320})));
+
+  @media (min-width: #{$maxWidth + px}) {
+    width: #{$pcSize + px};
+  }
+}
+
+@mixin height($pcSize, $mobSize) {
+  height: calc(#{$mobSize + px} + (#{$pcSize} - #{$mobSize}) * ((100vw - 320px) / (#{$maxWidth - 320})));
+
+  @media (min-width: #{$maxWidth + px}) {
+    height: #{$pcSize + px};
+  }
+}
+
+@mixin anchor($color, $hover) {
+  display: inline-block;
+  color: $color;
+  position: relative;
+  text-decoration: none;
+  transition: all 0.3s linear;
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: $color;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s linear;
+  }
+  @media (min-width: 1024px) {
+    &:hover {
+      color: $hover;
+
+      &:before {
+        background-color: $hover;
+        visibility: visible;
+        transform: scaleX(1);
+      }
+    }
+  }
+}

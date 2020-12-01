@@ -1,0 +1,42 @@
+<header class="header">
+  <div class="container">
+    <a [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="header__logo">
+      <img src="../../../assets/img/logo.png" alt="header__logo">
+    </a>
+    <form class="header__form">
+      <input type="text" placeholder="Search on divisima ....">
+      <button><img src="../../../assets/img/icons/search.svg" alt="header__search"></button>
+    </form>
+    <div class="header__links">
+      <div class="header__account">
+        <a class="header__account-sign" href="#">
+          <svg class="close_svg">
+            <use xlink:href="../../../assets/sprite.svg#login"></use>
+          </svg>
+          Sign In
+        </a>
+        <span>or</span>
+        <a class="header__account-create" href="#">Create Account</a>
+      </div>
+      <div class="header__cart">
+        <a href="#">
+          <span>0</span>
+          <svg class="close_svg">
+            <use xlink:href="../../../assets/sprite.svg#cart"></use>
+          </svg>
+          Shopping Cart
+        </a>
+      </div>
+    </div>
+  </div>
+  <nav class="header__nav">
+    <ul class="header__list container">
+      <li class="header__list-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <a [routerLink]="['/']">home</a>
+      </li>
+      <li class="header__list-item" routerLinkActive="active">
+        <a [routerLink]="['/contacts']">Contacts</a>
+      </li>
+    </ul>
+  </nav>
+</header>
