@@ -4,4 +4,264 @@
 .footer {
    background-color: $backFooter;
    padding: 60px 0;
+
+   @media (max-width: 1023.98px) {
+    padding: 35px 0 20px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__columns {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 35px;
+
+    @media (max-width: 1023.98px) {
+      flex-wrap: wrap;
+      padding-bottom: 20px;
+    }
+  }
+
+  &__column {
+    width: calc(25% - 15px);
+    flex: 0 0 auto;
+    color: $middle_grey;
+
+    @media (max-width: 1023.98px) {
+      width: calc(50% - 15px);
+    }
+
+    @media (max-width: 767.98px) {
+      width: 100%;
+    }
+
+    &:nth-of-type(1) {
+      img {
+        margin-top: 40px;
+      }
+    }
+
+    h2 {
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #fff;
+      margin: 60px 0 45px;
+
+      @media (max-width: 1023.98px) {
+        margin: 30px 0 20px;
+        font-size: 1em;
+      }
+    }
+
+    ul,ol {
+      column-count: 2;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      a {
+        display: inline-block;
+        position: relative;
+        padding-left: 20px;
+        font-weight: 600;
+        font-size: 14px;
+        color: $middle_grey;
+        margin-bottom: 6px;
+        transition: all 0.3s linear;
+
+        @media (min-width: 1024px) {
+          &:hover {
+            color: #fff;
+
+            &:after {
+              width: 7px;
+              height: 7px;
+              background: $access;
+            }
+          }
+        }
+
+        &::after {
+          position: absolute;
+          content: "";
+          width: 5px;
+          height: 5px;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          border: 1px solid $access;
+          border-radius: 50%;
+          transition: all 0.3s linear;
+        }
+      }
+    }
+
+    &-info {
+      display: flex;
+      margin-bottom: 15px;
+
+      span {
+        color: $access;
+        margin-right: 15px;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      a {
+        @include anchor($middle_grey, $access);
+      }
+    }
+  }
+
+  &__post {
+    @media(min-width: 600px) and (max-width: 767.98px) {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    &-item {
+      display: flex;
+
+      @media (min-width: 600px) and (max-width: 767.98px) {
+        width: calc(50% - 15px);
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
+
+      img {
+        width: 64px;
+        height: 64px;
+        object-fit: contain;
+        margin-right: 22px;
+        align-self: flex-start;
+      }
+    }
+
+    &-desc {
+      h6 {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        opacity: 0.25;
+        color: #717171;
+        margin: 0;
+      }
+
+      span {
+        display: block;
+        font-size: 12px;
+        color: $middle_grey;
+        margin-bottom: 4px;
+      }
+
+      a {
+        font-size: 12px;
+        @include anchor($access, #fff)
+      }
+    }
+  }
+}
+
+.social-links {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #3b3535;
+  }
+  &__wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 45px 0 10px;
+
+    @media (max-width: 1023.98px) {
+      padding: 30px 0 0px;
+    }
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 15px;
+      &:not(:last-child) {
+        margin-right: 60px;
+        @media (min-width:1024px) and (max-width: 1670px) {
+          margin-right: calc(18px + (60 - 18) * ((100vw - 1024px) / (1670 - 1024)));
+        }
+
+        @media (max-width: 1023.98px) {
+          margin-right: 18px;
+        }
+      }
+
+      svg {
+        width: 30px;
+        height: 30px;
+        fill: #d7d7d7;
+        overflow: hidden;
+        transition: all 0.3s linear;
+
+        @media (min-width: 576px) {
+          margin-right: 19px;
+        }
+
+        @media (max-width: 576px) {
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      span {
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: $middle_grey;
+        padding-top: 5px;
+        transition: all 0.3s linear;
+
+        @media (max-width: 1023.98px) {
+          display: none;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        &:hover {
+          span {
+            color: #fff;
+          }
+
+          svg {
+            fill: #2f5d84;
+          }
+        }
+      }
+    }
+  }
+
+  p {
+    text-align: center;
+    @include size(18, 14);
+    color: #fff;
+
+    a {
+      @include anchor(#fff, $access);
+    }
+  }
+
+  img {
+    height: 14px;
+  }
 }

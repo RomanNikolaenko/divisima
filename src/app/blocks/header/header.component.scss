@@ -5,11 +5,12 @@
   display: flex;
   flex-direction: column;
 
-  > .container {
+  >.container {
     display: flex;
     align-items: center;
     padding-top: 20px;
     padding-bottom: 20px;
+
     @media (max-width: 991.98px) {
       flex-direction: column;
     }
@@ -103,6 +104,7 @@
     &-sign {
       display: flex;
       align-items: center;
+
       &:hover {
         svg {
           fill: $access;
@@ -180,25 +182,206 @@
   }
 
   &__nav {
+    position: relative;
     width: 100%;
     flex: 1 1 auto;
     background-color: $backFooter;
+
+    @media (max-width: 767.98px) {
+      padding: 0 15px;
+    }
+
+    &-burger {
+      position: relative;
+      z-index: 100;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      margin: 8px 0;
+      width: max-content;
+      padding: 6px 46px 6px 6px;
+      line-height: 1;
+      color: #fff;
+      font-style: normal;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-shadow: 0 1px 3px #000;
+      background-color: #565656;
+      border-radius: 4px;
+
+      @media (min-width: 768px) {
+        display: none;
+      }
+
+      span {
+        margin-top: 5px;
+      }
+
+      i {
+        position: absolute;
+        right: 6px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 30px;
+        height: 3px;
+        background-color: #fff;
+        transition-timing-function: cubic-bezier(.55, .055, .675, .19);
+        transition-duration: .22s;
+        transition-property: transform;
+
+        &:before,
+        &:after {
+          content: '';
+          position: absolute;
+          left: 0;
+          width: inherit;
+          height: inherit;
+          background: inherit;
+        }
+
+        &:before {
+          transition: top .1s ease-in .25s, opacity .1s ease-in;
+          top: -7px;
+        }
+
+        &:after {
+          transition: bottom .1s ease-in .25s, transform .22s cubic-bezier(.55, .055, .675, .19);
+          bottom: -7px;
+        }
+
+        &.open {
+          height: 4px;
+          transition-delay: .12s;
+          transition-timing-function: cubic-bezier(.215, .61, .355, 1);
+          transform: rotate(225deg) translateY(50%);
+
+          .header__home & {
+            opacity: 0;
+            visibility: hidden;
+          }
+
+          &:before {
+            top: 0;
+            transition: top .1s ease-out, opacity .1s ease-out .12s;
+            opacity: 0;
+          }
+
+          &:after {
+            bottom: 0;
+            transition: bottom .1s ease-out, transform .22s cubic-bezier(.215, .61, .355, 1) .12s;
+            transform: rotate(-90deg);
+          }
+        }
+      }
+    }
   }
 
   &__list {
-    display: flex;
     align-items: center;
     list-style: none;
+    padding: 0;
+    margin: 0;
+    transition: all 0.2s linear;
+
+    &.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @media (min-width: 768px) {
+      display: flex;
+      max-width: 1670px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    @media (max-width: 767.98px) {
+      position: absolute;
+      left: 0;
+      top: 100%;
+      width: 100%;
+      padding: 0 15px;
+      background-color: $backFooter;
+      opacity: 0;
+      visibility: hidden;
+    }
 
     &-item {
-      padding: 12px 0;
-      a {
+      position: relative;
+      padding: 5px 0;
+
+      @media (min-width: 768px) {
+        padding: 12px 0;
+      }
+
+      >a {
         position: relative;
         @include anchor(#fff, $access);
-        margin-right: 50px;
+        margin: 3px 0 0 0;
         line-height: 1;
         padding: 5px 0;
+        text-transform: capitalize;
+
+        span {
+          width: 15px;
+          height: 15px;
+          margin-left: 5px;
+          margin-bottom: 2px;
+          @media (min-width: 768px) {
+            display: none;
+          }
+        }
+
+        @media (max-width: 767.98px) {
+          display: inline-flex;
+          align-items: center;
+        }
       }
+
+      @media (min-width: 1024px) {
+        &:hover {
+
+          &>ul,
+          &>ol {
+            visibility: visible;
+            opacity: 1;
+            margin-top: 0;
+          }
+        }
+      }
+
+      &:not(:last-child) {
+        a {
+          margin-right: 50px;
+        }
+      }
+    }
+  }
+
+  &__subList {
+    position: absolute;
+    list-style: none;
+    width: 220px;
+    left: 0;
+    top: 100%;
+    padding: 20px;
+    visibility: hidden;
+    opacity: 0;
+    margin-top: 50px;
+    background: #fff;
+    z-index: 99;
+    transition: all 0.4s linear;
+    box-shadow: 2px 7px 20px rgba(0, 0, 0, 0.05);
+
+    li {
+      &:not(:last-child) {
+        margin-bottom: 7px;
+      }
+    }
+
+    a {
+      @include anchor($base, $access);
     }
   }
 }
