@@ -1,0 +1,39 @@
+@import "~src/assets/styles/colors";
+@import "~src/assets/styles/mixins";
+
+.features {
+  display: flex;
+  padding: 0 15px;
+  background-color: $alabaster;
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 33.333%;
+    flex: 0 0 auto;
+    padding: 20px 0;
+
+    &:nth-of-type(2) {
+      background-color: $access;
+
+      h2 {
+        color: #fff;
+      }
+    }
+
+    img {
+      display: inline-block;
+      max-width: 60px;
+      margin-right: 15px;
+    }
+
+    h2 {
+      @include size(24, 18);
+      text-transform: uppercase;
+      font-style: normal;
+      margin: 5px 0 0;
+    }
+  }
+}
